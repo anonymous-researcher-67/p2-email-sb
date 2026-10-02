@@ -3,24 +3,51 @@
 This document provides a plain-text breakdown of the mathematical significance of our data.
 
 ## 1. Response Rate Significance (Logistic Regression)
-We use Logistic Regression to see if a specific persona trait actually changes the probability of a scammer replying. A p-value below 0.05 means the effect is statistically significant (not just random luck).
 
-### Regression Results (Baseline: p_4):
-#### How to Read These Results:
-- **Coefficient**: The specific variable or condition being tested against the baseline.
-- **Estimate (OR)**: The Odds Ratio. An OR > 1 means the outcome is more likely than the baseline. An OR < 1 means it is less likely.
-- **std. error**: Measures the precision of the estimate. Smaller values indicate higher precision.
-- **p**: The p-value indicates statistical significance. A value < 0.05 proves the effect is real and not just random noise.
+We use logistic regression to test whether a persona changes the probability of a scammer replying. The baseline is p_4, the persona with the highest raw response rate.
 
-- **const**: OR = 0.598, std. error = 0.166, p = 0.002 (Significant). This is the baseline intercept.
-- **h_3x2**: OR = 0.694, std. error = 0.238, p = 0.125 (Not Significant). The difference measured here could just be random noise.
-- **h_5x1**: OR = 0.489, std. error = 0.237, p = 0.003 (Significant). This condition makes the target outcome 0.49 times more/less likely compared to the baseline.
-- **p_1**: OR = 0.562, std. error = 0.239, p = 0.016 (Significant). This condition makes the target outcome 0.56 times more/less likely compared to the baseline.
-- **p_2**: OR = 0.604, std. error = 0.243, p = 0.038 (Significant). This condition makes the target outcome 0.60 times more/less likely compared to the baseline.
-- **p_3**: OR = 0.782, std. error = 0.248, p = 0.321 (Not Significant). The difference measured here could just be random noise.
-- **p_5**: OR = 0.605, std. error = 0.252, p = 0.046 (Significant). This condition makes the target outcome 0.61 times more/less likely compared to the baseline.
-- **p_6**: OR = 0.571, std. error = 0.244, p = 0.022 (Significant). This condition makes the target outcome 0.57 times more/less likely compared to the baseline.
-- **p_7**: OR = 0.501, std. error = 0.235, p = 0.003 (Significant). This condition makes the target outcome 0.50 times more/less likely compared to the baseline.
+For each coefficient we report the odds ratio (OR), the log-odds, the standard error of the log-odds, the Wald 95% confidence interval, the raw p-value, and the Bonferroni-adjusted p-value.
+
+- CI method: 95% CI = exp( ln(OR) +/- 1.96 * std. error ), rounded to 2 decimals.
+- Correction method: adjusted p = min(raw p x 8, 1.0), because eight personas are compared with the baseline.
+- The intercept is not a persona test, so it is not corrected.
+
+| Coefficient | OR | ln(OR) | std. error | 95% CI (Wald) | p (raw) | Bonferroni p |
+| --- | --- | --- | --- | --- | --- | --- |
+| (intercept) | 0.598 | -0.514 | 0.166 | [0.43, 0.83] | 0.002 | n/a |
+| p_1 | 0.562 | -0.576 | 0.239 | [0.35, 0.90] | 0.016 | 0.128 |
+| p_2 | 0.604 | -0.504 | 0.243 | [0.38, 0.97] | 0.038 | 0.304 |
+| p_3 | 0.782 | -0.246 | 0.248 | [0.48, 1.27] | 0.321 | 1.000 |
+| p_5 | 0.605 | -0.503 | 0.252 | [0.37, 0.99] | 0.046 | 0.368 |
+| p_6 | 0.571 | -0.560 | 0.244 | [0.35, 0.92] | 0.022 | 0.176 |
+| p_7 | 0.501 | -0.691 | 0.235 | [0.32, 0.79] | 0.003 | 0.024 |
+| h_3x2 | 0.694 | -0.365 | 0.238 | [0.44, 1.11] | 0.125 | 1.000 |
+| h_5x1 | 0.489 | -0.715 | 0.237 | [0.31, 0.78] | 0.003 | 0.024 |
+
+After the Bonferroni correction, only p_7 and h_5x1 remain below 0.05 (adjusted p = 0.024 for both).
+
+Worked example for p_1:
+
+- OR = 0.562, std. error = 0.239
+- ln(0.562) = -0.576, and 1.96 * 0.239 = 0.468
+- Lower: exp(-0.576 - 0.468) = 0.35
+- Upper: exp(-0.576 + 0.468) = 0.90
+- 95% CI = [0.35, 0.90]
+
+Raw counts by persona:
+
+| Persona | Initiated | Replied | Response rate |
+| --- | --- | --- | --- |
+| p_1 | 179 | 45 | 25.14% |
+| p_2 | 162 | 43 | 26.54% |
+| p_3 | 135 | 43 | 31.85% |
+| p_4 | 155 | 58 | 37.42% |
+| p_5 | 143 | 38 | 26.57% |
+| p_6 | 165 | 42 | 25.45% |
+| p_7 | 204 | 47 | 23.04% |
+| h_3x2 | 167 | 49 | 29.34% |
+| h_5x1 | 199 | 45 | 22.61% |
+| Total | 1509 | 410 | 27.17% |
 
 ---
 

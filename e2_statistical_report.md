@@ -3,18 +3,35 @@
 This document provides a plain-text breakdown of the mathematical significance of our data.
 
 ## 1. Response Rate Significance (Logistic Regression)
-We use Logistic Regression to see if a specific persona trait actually changes the probability of a scammer replying. A p-value below 0.05 means the effect is statistically significant (not just random luck).
 
-### Regression Results (Baseline: Origin: Nigerian, Intent: Not-Seeking):
-#### How to Read These Results:
-- **Coefficient**: The specific variable or condition being tested against the baseline.
-- **Estimate (OR)**: The Odds Ratio. An OR > 1 means the outcome is more likely than the baseline. An OR < 1 means it is less likely.
-- **std. error**: Measures the precision of the estimate. Smaller values indicate higher precision.
-- **p**: The p-value indicates statistical significance. A value < 0.05 proves the effect is real and not just random noise.
+We use logistic regression to test whether origin and relationship intent change the probability of a scammer replying. The baseline is Origin: Nigerian and Intent: Not-Seeking.
 
-- **const**: OR = 0.106, std. error = 0.167, p = 0.000 (Significant). This is the baseline intercept.
-- **Origin_European**: OR = 2.230, std. error = 0.207, p = 0.000 (Significant). This condition makes the target outcome 2.23 times more/less likely compared to the baseline.
-- **Intent_Seeking**: OR = 1.108, std. error = 0.212, p = 0.627 (Not Significant). The difference measured here could just be random noise.
+- CI method: 95% CI = exp( ln(OR) +/- 1.96 * std. error ), rounded to 2 decimals.
+- The paper applies the Bonferroni correction only to Experiment 1. For reference, a Bonferroni adjustment over the two factor tests would give adjusted p = min(raw p x 2, 1.0).
+
+| Coefficient | OR | ln(OR) | std. error | 95% CI (Wald) | p (raw) | Bonferroni p (reference) |
+| --- | --- | --- | --- | --- | --- | --- |
+| (intercept) | 0.106 | -2.244 | 0.167 | [0.08, 0.15] | <0.001 | n/a |
+| Origin: Northern European | 2.230 | 0.802 | 0.207 | [1.49, 3.35] | <0.001 | <0.002 |
+| Intent: Seeking Romance | 1.108 | 0.103 | 0.212 | [0.73, 1.68] | 0.627 | 1.000 |
+
+Worked example for Origin:
+
+- OR = 2.230, std. error = 0.207
+- ln(2.230) = 0.802, and 1.96 * 0.207 = 0.406
+- Lower: exp(0.802 - 0.406) = 1.49
+- Upper: exp(0.802 + 0.406) = 3.35
+- 95% CI = [1.49, 3.35]
+
+Raw counts by persona:
+
+| Persona | Condition | Initiated | Replied | Response rate |
+| --- | --- | --- | --- | --- |
+| p_1 | Nigerian / Seeking | 179 | 17 | 9.50% |
+| p_2 | Nigerian / Not-Seeking | 335 | 34 | 10.15% |
+| p_3 | European / Seeking | 121 | 27 | 22.31% |
+| p_4 | European / Not-Seeking | 182 | 33 | 18.13% |
+| Total | | 817 | 111 | 13.59% |
 
 ---
 
