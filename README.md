@@ -1,3 +1,11 @@
+# Email Experiments
+
+## To view the results of the experiments, inspect the following files:
+- [View: Results of Experiment 1 Round 1](https://htmlpreview.github.io/?https://github.com/anonymous-researcher-67/p2-email-sb/blob/master/e1_r1.html); [Download: Results of Experiment 1 Round 1](e1_r1.html)
+- [View: Results of Experiment 1 Round 2](https://htmlpreview.github.io/?https://github.com/anonymous-researcher-67/p2-email-sb/blob/master/e1_r2.html); [Download: Results of Experiment 1 Round 2](e1_r2.html)
+- [View: Results of Experiment 1 Both Rounds Combined](https://htmlpreview.github.io/?https://github.com/anonymous-researcher-67/p2-email-sb/blob/master/e1_all_rounds.html); [Download](e1_all_rounds.html)
+- [View: Results of Experiment 2](https://htmlpreview.github.io/?https://github.com/anonymous-researcher-67/p2-email-sb/blob/master/e2.html); [Download](e2.html)
+
 ## Experiment 1 Prompts
 
 ### Meta-Prompt for Persona Generation
