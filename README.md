@@ -1,10 +1,26 @@
 # Email Experiments
 
 ## To view the results of the experiments, inspect the following files:
-- [View: Results of Experiment 1 Round 1](https://htmlpreview.github.io/?https://github.com/anonymous-researcher-67/p2-email-sb/blob/master/e1_r1.html); [Download: Results of Experiment 1 Round 1](e1_r1.html)
-- [View: Results of Experiment 1 Round 2](https://htmlpreview.github.io/?https://github.com/anonymous-researcher-67/p2-email-sb/blob/master/e1_r2.html); [Download: Results of Experiment 1 Round 2](e1_r2.html)
-- [View: Results of Experiment 1 Both Rounds Combined](https://htmlpreview.github.io/?https://github.com/anonymous-researcher-67/p2-email-sb/blob/master/e1_all_rounds.html); [Download](e1_all_rounds.html)
-- [View: Results of Experiment 2](https://htmlpreview.github.io/?https://github.com/anonymous-researcher-67/p2-email-sb/blob/master/e2.html); [Download](e2.html)
+1. Experiment 1 Round 1:
+- [Interactive view of the results](https://htmlpreview.github.io/?https://github.com/anonymous-researcher-67/p2-email-sb/blob/master/e1_r1.html).
+- [Conversations dataset](e1_r1_dataset.json).
+- [Statistics](e1_r1_stats.md).
+
+2. Experiment 1 Round 2:
+- [Interactive view of the results](https://htmlpreview.github.io/?https://github.com/anonymous-researcher-67/p2-email-sb/blob/master/e1_r2.html).
+- [Conversations dataset](e1_r2_dataset.json).
+- [Statistics](e1_r2_stats.md).
+
+3. Experiment 2:
+- [Interactive view of the results](https://htmlpreview.github.io/?https://github.com/anonymous-researcher-67/p2-email-sb/blob/master/e2.html).
+- [Conversations dataset](e2_dataset.json).
+- [Statistics](e2_stats.md).
+
+4. Experiment 1 all rounds as one long run
+- [Interactive view of the results](https://htmlpreview.github.io/?https://github.com/anonymous-researcher-67/p2-email-sb/blob/master/e1_all_rounds.html).
+- [Conversations dataset](e1_all_rounds_dataset.json).
+- [Statistics](e1_all_rounds_stats.md).
+
 
 ## Experiment 1 Prompts
 
